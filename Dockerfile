@@ -24,13 +24,12 @@ COPY . .
 # [optional] tests & build
 ENV NODE_ENV=production
 RUN bun test
-RUN bun run build
 
 # copy production dependencies and source code into final image
 FROM base AS release
 COPY --from=install /temp/prod/node_modules node_modules
-COPY --from=prerelease /usr/src/app/index.ts .
-COPY --from=prerelease /usr/src/app/package.json .
+COPY --from=prerelease /usr/src/app/*.ts .
+COPY --from=prerelease /usr/src/app/*.env .
 
 # run the app
 USER bun
