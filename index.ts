@@ -1,8 +1,7 @@
-const PORT = process.env.PORT || 3000
+import env from "./env"
 
 Bun.serve({
-	port: PORT,
 	fetch(req) {
-		return new Response(`Bonjour ${process.env.NUMERICOACH}`)
+		return new Response(`Bonjour ${env.NUMERICOACH}`)
 	}
 })
