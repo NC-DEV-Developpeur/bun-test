@@ -1,7 +1,7 @@
 import z from "zod"
 
 export const envSchema = z.object({
-	PORT: z.string().default("3000"),
+	PORT: z.string(),
 	NODE_ENV: z.string().default("development"),
 	NUMERICOACH: z.string().min(3)
 })
